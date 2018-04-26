@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Movie {
 
+	//attributes
 	@Id //control+space to import
 	@GeneratedValue
 	private Long id;
@@ -14,6 +15,8 @@ public class Movie {
 	private String genre;
 	private String rating;
 	
+	
+	//constructors
 	public Movie() {
 	}
 	
@@ -23,6 +26,7 @@ public class Movie {
 		this.rating = rating;
 	}
 
+	//getters and setters
 	public Long getId() {
 		return id;
 	}
