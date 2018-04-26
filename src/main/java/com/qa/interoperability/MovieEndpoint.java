@@ -8,28 +8,26 @@ import javax.ws.rs.Produces;
 
 import com.qa.business.service.IMovieService;
 
-//expose via REST
-//activate this class
 @Path("/movie")
 public class MovieEndpoint {
-	//instance variable
+	
 	@Inject
 	private IMovieService service;
 	
-	//activate the method
+	
 	@GET
 	@Path("/json")
-	@Produces ({ "application/json" })
-	public String getAllMovies() {
+	@Produces({ "application/json" })
+	public String getAllMovies()
+	{
 		return service.getAllMovies();
-	//returns JSON string, and shows it in PostMan
 	}
 	
 	@GET
 	@Path("/json/{id}")
-	@Produces ({ "application/json" })
-	public String getAMovie(@PathParam("id") Long id) {
+	@Produces({ "application/json" })
+	public String getAMovie(@PathParam("id") Long id)
+	{
 		return service.getAMovie(id);
-	//returns JSON string, and shows it in PostMan
 	}
 }
