@@ -4,5 +4,7 @@ public interface IMovieRepository {
 	
 	String getAllMovies();
 	String getAMovie(Long id);
-	String createMovie(String movieJSON);
+	String createAMovie(String movieJSON);
+	String deleteAMovie(Long id);
+	
 }

@@ -36,12 +36,10 @@ public class MovieDBRepository implements IMovieRepository {
 	@Override
 	public String getAMovie(Long id) {
 		Movie aMovie = findAMovie(id);
-		if(aMovie!=null)
-		{
+		if(aMovie!=null) {
 			return util.getJSONForObject(aMovie);
 		}
-		else
-		{
+		else {
 			return "{\"message\":\"movie not found\"}";
 		}
 	}
@@ -52,10 +50,22 @@ public class MovieDBRepository implements IMovieRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String createMovie(String movieJSON) {
+	public String createAMovie(String movieJSON) {
 		Movie aMovie = util.getObjectForJSON(movieJSON, Movie.class);
 		manager.persist(aMovie);
 		return "{\"message\":\"movie created\"}";
 	}
-	
+
+	@Override
+	@Transactional(REQUIRED)
+	public String deleteAMovie(Long id) {
+		Movie oldMovie = findAMovie(id);
+		if(oldMovie != null) {
+			manager.remove(oldMovie);
+			return "{\"message\":\"movie deleted\"}";
+		}
+		else {
+			return "{\"message\":\"movie not found\"}";
+		}
+	}
 }
