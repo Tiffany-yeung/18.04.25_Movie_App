@@ -38,4 +38,24 @@ public class MovieDBRepository implements IMovieRepository {
 		return util.getJSONForObject(movies);
 	}
 
+	@Override
+	public String getAMovie(Long id) {
+		Movie aMovie = getMovie(id);
+		//find from the movie class using the id
+		//logic check
+		if(aMovie != null) {
+			return util.getJSONForObject(aMovie);
+		}
+		else {
+			return "{\"message\":\"movie not found\"}";
+			//need to use \ escape character
+		}
+	}
+
+	private Movie getMovie(Long id) {
+		return manager.find(Movie.class, id);
+	}
+
+	
+	
 }
